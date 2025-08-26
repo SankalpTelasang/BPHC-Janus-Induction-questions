@@ -1,2 +1,8 @@
-# BPHC-Janus-Induction-questions
-My answers to the avionics problems in Team Janus's induction problem statements
+# BPHC-Janus-Induction-questions 
+2025A4PS1044H Sankalp Telasang
+My answers to the avionics problems in Team Janus's induction problem statements.
+
+# Q1
+For question 1, I began with researching noise filtering methods, and settled on a LOESS method. This uses the local region of a point to smooth the curve, and for my implementation specifically, I consider the nearest 2 points (the previous and next value in time). I multiply those by a weight, and multiply the value of the point itself by a weight and then add it together to get the smoothed point. After this, I noticed that the data had some corrupted values, and so I implemented detection and simple interpolation for these values. After this, I began the first step of my error correction, which is to detect erroneous points. The method I used is to generate the LOESS graph for the data, check each data point's difference from the LOESS curve, and if it is above some maximum acceptable value, then it is removed and interpolated from the nearest 2 points. After a few rounds of doing this, all the points will be within the minimum acceptable value, and so every point is considered non-erroneous. The final step of data manipulation is to generate the final LOESS curve using the same method mentioned above.
+
+Something to note, is that for my implementaion I have made it very general. It will work for any set of values that you pass in, as long as that data is in the first column of a csv document. There are some assumptions, for example that every subsequent row is at some predifined and uniform interval from the previous one.
