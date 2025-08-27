@@ -213,6 +213,7 @@ def update(frame):
     line_unsmooth.set_data(x, y_unsmooth)
     return line_smooth, line_unsmooth
 
-ani = animation.FuncAnimation(fig, update, frames = total_x * fps, init_func = init, interval = 1000 / fps, blit = True)
+ani = animation.FuncAnimation(fig, update, frames = int(total_x * fps), init_func = init, interval = 1000 / fps, blit = True)
 plt.show()
 ###################################
+
