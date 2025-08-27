@@ -7,14 +7,14 @@ import pandas as pd
 # Setup variables that can be changed according to your data set
 y_label = 'Height (m)'
 x_label = 'Time (s)'
-file_path = r"C:\Users\dell\Downloads\T1.csv"
+file_path = r"C:\Users\dell\Downloads\T1.csv" # The file path of the data, in csv format
 interval_per_datapoint = 1 # How much the x axis unit changes per row of the csv
 acceptable_deviation_factor = 1.8 # The smaller this is, the more sensitive the erroneous point detection will be
 smoothing_strength = 0.3 # Higher value leads to more smoothing. Keep between 0.0 and 0.5
 graph_margin = 0.05 #The extra margin on the y axis as a percent that will be drawn on the graph
 
-fps = 60
-speedup = 20 # The units (specified in the x_label) of the data that will be plotted per real life second
+fps = 20
+speedup = 1 # The units (specified in the x_label) of the data that will be plotted per real life second
 
 # Extracting the data from the csv. Only the first column will be read, 
 # and it is assumed that every increment down the table is done at the 
@@ -216,4 +216,5 @@ def update(frame):
 ani = animation.FuncAnimation(fig, update, frames = int(total_x * fps), init_func = init, interval = 1000 / fps, blit = True)
 plt.show()
 ###################################
+
 
